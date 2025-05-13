@@ -4,9 +4,10 @@ import { InputStudentId } from "../components/InputStudentId";
 import { InputStudentName } from "../components/InputStudentName";
 import { SelectDisciplina } from "../components/SelectMatters";
 import InputNota from "../components/InputNotaAluno";
+import { salvarAluno } from '../services/alunoService'
 
 
-export const RegisterStudent = () => {
+export const RegisterPage = () => {
   const navigate = useNavigate();
 
   const [nome, setNome] = useState("");
@@ -18,20 +19,16 @@ export const RegisterStudent = () => {
 
   const disciplinas = ["Matemática", "Português", "História", "Física", "Química", "Artes", "Educação Física", "Filosofia", "Sociologia"];
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-
-    
-    const aluno = {
-      id: registro,
-      nome,
-      disciplina,
-      notas: [Number(nota1), Number(nota2), Number(nota3)],
-    };
-
-    console.log("Aluno cadastrado", {aluno});
-    navigate("/")
-  };
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    try {
+      await salvarAluno({ nome, idade: Number(idade), disciplina, notas })
+      alert('Aluno cadastrado com sucesso!')
+    } catch (err) {
+      console.error(err)
+      alert('Erro ao salvar aluno')
+    }
+  }
 
   return (
     <div>

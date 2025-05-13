@@ -8,6 +8,7 @@ type StudentNameInputProps = {
 
 export const InputStudentName = ({value, onChange, placeholder} : StudentNameInputProps) => (
   <input 
+  className="bg-sky-200"
   value={value}
   onChange={onChange}
   placeholder={placeholder}

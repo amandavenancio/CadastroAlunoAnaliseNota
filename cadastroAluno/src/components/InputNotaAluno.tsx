@@ -9,14 +9,7 @@ type InputNotaProps = {
   onChangeNota3: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-const InputNota: React.FC<InputNotaProps> = ({
-  nota1,
-  nota2,
-  nota3,
-  onChangeNota1,
-  onChangeNota2,
-  onChangeNota3,
-}) => (
+const InputNota = ({nota1, nota2, nota3, onChangeNota1, onChangeNota2, onChangeNota3}: InputNotaProps) => (
   <>
     <input
       type="number"
