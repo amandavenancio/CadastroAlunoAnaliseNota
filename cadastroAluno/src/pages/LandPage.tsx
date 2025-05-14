@@ -4,11 +4,26 @@ import { InitialMessage } from "../components/InitialMessage"
 import { AllNotesButton } from "../components/AllNotesButton";
 import { RegisterButton } from "../components/RegisterButton";
 
+import { buscarAlunos } from "../services/alunoService";
+
 export const LandPage = () => {
 
   const [alunoQuantity, setAlunoQuantity] = useState(0);
   const [initialMessage, setInitialMessage] = useState('');
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchAlunos = async () => {
+      try {
+        const alunos = await buscarAlunos(); // <- busca os alunos do Supabase
+        setAlunoQuantity(alunos.length); // <- atualiza a quantidade
+      } catch (error) {
+        console.error("Erro ao buscar alunos:", error);
+      }
+    };
+
+    fetchAlunos(); // <- executa ao montar o componente
+  }, []);
 
   useEffect(() => {
     if (alunoQuantity > 0) {
@@ -21,17 +36,19 @@ export const LandPage = () => {
 
   return (
     <div>
+
       <InitialMessage message={initialMessage} />
-      
+
       <RegisterButton
-        onClick={ () => navigate("/register")}
-      >
-        Registrar aluno
+        onClick={() => navigate("/register")}
+      >Registrar aluno
       </RegisterButton>
+
       <AllNotesButton
-        onClick={ }>
-        Verificar notas
+        onClick={() => navigate("/allNotes")}
+      >Verificar notas
       </AllNotesButton>
+
     </div>
   )
 }
