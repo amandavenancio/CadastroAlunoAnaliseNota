@@ -4,7 +4,7 @@ import { InputStudentId } from "../components/InputStudentId";
 import { InputStudentName } from "../components/InputStudentName";
 import { SelectDisciplina } from "../components/SelectMatters";
 import InputNota from "../components/InputNotaAluno";
-import { salvarAluno } from '../services/alunoService'
+import { salvarAluno } from '../services/studentSave.ts'
 
 
 export const RegisterPage = () => {
@@ -22,7 +22,11 @@ export const RegisterPage = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     try {
-      await salvarAluno({ nome, idade: Number(idade), disciplina, notas })
+      await salvarAluno({ 
+        registro, 
+        nome, 
+        disciplina, 
+        notas: [Number(nota1), Number(nota2), Number(nota3)] })
       alert('Aluno cadastrado com sucesso!')
     } catch (err) {
       console.error(err)

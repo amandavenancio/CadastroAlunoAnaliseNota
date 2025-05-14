@@ -4,7 +4,7 @@ import { InitialMessage } from "../components/InitialMessage"
 import { AllNotesButton } from "../components/AllNotesButton";
 import { RegisterButton } from "../components/RegisterButton";
 
-import { buscarAlunos } from "../services/alunoService";
+import { buscarAlunos } from "../services/studentSave";
 
 export const LandPage = () => {
 

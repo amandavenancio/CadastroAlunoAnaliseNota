@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { DisciplinaMediaCard } from "../components/DisciplinaMediaCard";
 import { calcularMedia } from "../utils/media";
 import { AlunoMediaCard } from "../components/AlunoMediaCard";
-import { buscarAlunos } from '../services/alunoService'
+import { buscarAlunos } from '../services/studentSave'
 
 
 type Aluno = {
