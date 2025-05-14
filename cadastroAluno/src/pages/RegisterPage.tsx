@@ -4,10 +4,12 @@ import { InputStudentId } from "../components/InputStudentId";
 import { InputStudentName } from "../components/InputStudentName";
 import { SelectDisciplina } from "../components/SelectMatters";
 import InputNota from "../components/InputNotaAluno";
-import { salvarAluno } from '../services/studentSave.ts'
+import { salvarAluno } from '../services/studentSaveAndSearch.ts'
+import { HomePageButton } from "../components/HomePageButton.tsx";
 
 
 export const RegisterPage = () => {
+
   const navigate = useNavigate();
 
   const [nome, setNome] = useState("");
@@ -62,6 +64,11 @@ export const RegisterPage = () => {
         />
         <button type="submit">Salvar</button>
       </form>
+
+      <HomePageButton onClick={() => {navigate("/")}}>
+        Página Inicial
+      </HomePageButton>
+
     </div>
   );
 };

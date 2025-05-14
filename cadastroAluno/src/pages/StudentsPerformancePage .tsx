@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { DisciplinaMediaCard } from "../components/DisciplinaMediaCard";
 import { calcularMedia } from "../utils/media";
 import { AlunoMediaCard } from "../components/AlunoMediaCard";
-import { buscarAlunos } from '../services/studentSave'
+import { buscarAlunos } from '../services/studentSaveAndSearch'
+import { HomePageButton } from "../components/HomePageButton";
 
 
 type Aluno = {
@@ -13,6 +15,8 @@ type Aluno = {
 };
 
 export const StudentsPerformancePage  = () => {
+
+  const navigate = useNavigate();
   
   const [alunos, setAlunos] = useState<Aluno[]>([]);
 
@@ -67,7 +71,12 @@ export const StudentsPerformancePage  = () => {
           );
         })}
       </section>
+
+            <HomePageButton onClick={() => {navigate("/")}}>
+              Página Inicial
+            </HomePageButton>
     </div>
+
   );
 
 }

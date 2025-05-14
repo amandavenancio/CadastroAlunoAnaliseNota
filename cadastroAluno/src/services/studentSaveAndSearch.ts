@@ -1,6 +1,7 @@
 import { supabase } from '../supabaseClient'
 
 export const salvarAluno = async (aluno: {
+  registro: string
   nome: string
   disciplina: string
   notas: number[]

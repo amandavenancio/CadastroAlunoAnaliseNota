@@ -4,7 +4,7 @@ import { InitialMessage } from "../components/InitialMessage"
 import { AllNotesButton } from "../components/AllNotesButton";
 import { RegisterButton } from "../components/RegisterButton";
 
-import { buscarAlunos } from "../services/studentSave";
+import { buscarAlunos } from "../services/studentSaveAndSearch";
 
 export const LandPage = () => {
 
@@ -45,7 +45,7 @@ export const LandPage = () => {
       </RegisterButton>
 
       <AllNotesButton
-        onClick={() => navigate("/allNotes")}
+        onClick={() => navigate("/performance")}
       >Verificar notas
       </AllNotesButton>
 
