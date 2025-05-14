@@ -27,7 +27,7 @@ export const LandPage = () => {
 
   useEffect(() => {
     if (alunoQuantity > 0) {
-      setInitialMessage(`Há ${alunoQuantity} aluno(s) cadastrados.`);
+      setInitialMessage(`Há ${alunoQuantity} alunos cadastrados.`);
     } else {
       setInitialMessage("Não há alunos cadastrados.");
     }
@@ -35,10 +35,11 @@ export const LandPage = () => {
 
 
   return (
-    <div>
+    <div className="w-full flex flex-col max-w-md rounded-xl p-8 shadow-md items-center content-center place-content-center bg-red-100 gap-4">
 
       <InitialMessage message={initialMessage} />
 
+      <div className="flex justify-between gap-2 mt-4">
       <RegisterButton
         onClick={() => navigate("/register")}
       >Registrar aluno
@@ -48,6 +49,8 @@ export const LandPage = () => {
         onClick={() => navigate("/performance")}
       >Verificar notas
       </AllNotesButton>
+
+      </div>
 
     </div>
   )

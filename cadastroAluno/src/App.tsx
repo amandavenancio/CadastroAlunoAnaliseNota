@@ -1,5 +1,4 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import './App.css'
 import { LandPage } from './pages/LandPage'
 import { RegisterPage } from './pages/RegisterPage'
 import { StudentsPerformancePage } from './pages/StudentsPerformancePage '
