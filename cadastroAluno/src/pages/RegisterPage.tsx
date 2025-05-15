@@ -1,11 +1,12 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom";
-import { InputStudentId } from "../components/InputStudentId";
-import { InputStudentName } from "../components/InputStudentName";
-import { SelectDisciplina } from "../components/SelectMatters";
-import InputNota from "../components/InputNotaAluno";
+import { InputStudentId } from "../components/Inputs/InputStudentId.tsx";
+import { InputStudentName } from "../components/Inputs/InputStudentName.tsx";
+import { SelectDisciplina } from "../components/Selects/SelectMatters.tsx";
+import InputNota from "../components/Inputs/InputNotaAluno.tsx";
 import { salvarAluno } from '../services/studentSaveAndSearch.ts'
-import { HomePageButton } from "../components/HomePageButton.tsx";
+import { HomePageButton } from "../components/Buttons/HomePageButton.tsx";
+import { SaveRegisterPageButton } from "../components/Buttons/SaveRegisterPageButton.tsx";
 
 
 export const RegisterPage = () => {
@@ -65,10 +66,17 @@ export const RegisterPage = () => {
             onChangeNota3={(e) => setNota3(e.target.value)}
           />
 
-          <div className="mt-4 flex ">
-            <button type="submit">Salvar</button>
+          <div className="mt-4 flex place-content-center ">
+            <SaveRegisterPageButton
+              type="submit"
+              disabled={false}
+               >
+              Salvar
+            </SaveRegisterPageButton>
 
-            <HomePageButton onClick={() => { navigate("/") }}>
+            <HomePageButton 
+              onClick={() => { navigate("/") }}
+              className="ml-4">
               Página Inicial
             </HomePageButton>
           </div>

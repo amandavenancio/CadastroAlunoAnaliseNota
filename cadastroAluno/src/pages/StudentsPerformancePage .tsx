@@ -4,7 +4,7 @@ import { DisciplinaMediaCard } from "../components/DisciplinaMediaCard";
 import { calcularMedia } from "../utils/media";
 import { AlunoMediaCard } from "../components/AlunoMediaCard";
 import { buscarAlunos } from '../services/studentSaveAndSearch'
-import { HomePageButton } from "../components/HomePageButton";
+import { HomePageButton } from "../components/Buttons/HomePageButton";
 
 
 type Aluno = {

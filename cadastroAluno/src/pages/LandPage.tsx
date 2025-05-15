@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom";
 import { InitialMessage } from "../components/InitialMessage"
-import { AllNotesButton } from "../components/AllNotesButton";
-import { RegisterButton } from "../components/RegisterButton";
+import { AllNotesButton } from "../components/Buttons/AllNotesButton";
+import { RegisterButton } from "../components/Buttons/RegisterButton";
 
 import { buscarAlunos } from "../services/studentSaveAndSearch";
 
