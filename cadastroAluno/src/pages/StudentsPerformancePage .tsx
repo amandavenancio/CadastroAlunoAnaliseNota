@@ -14,10 +14,10 @@ type Aluno = {
   notas: number[];
 };
 
-export const StudentsPerformancePage  = () => {
+export const StudentsPerformancePage = () => {
 
   const navigate = useNavigate();
-  
+
   const [alunos, setAlunos] = useState<Aluno[]>([]);
 
   useEffect(() => {
@@ -29,7 +29,7 @@ export const StudentsPerformancePage  = () => {
         console.error(err)
       }
     }
-  
+
     fetchAlunos()
   }, [])
 
@@ -43,40 +43,54 @@ export const StudentsPerformancePage  = () => {
   });
 
   return (
-    <div className="p-4">
-      <h2 className="text-xl font-bold mb-4">Desempenho dos Alunos</h2>
 
-      <section>
-        <h3 className="text-lg font-semibold">Média por aluno</h3>
-        {alunos.map((aluno) => (
-          <AlunoMediaCard
-            key={aluno.id}
-            nome={aluno.nome}
-            disciplina={aluno.disciplina}
-            media={calcularMedia(aluno.notas)}
-          />
-        ))}
-      </section>
+    <div className="w-full min-h-screen flex items-center justify-center bg-gray-100">
+      <div className="p-4 flex flex-col place-content-center text-center bg-red-100 rounded-xl shadow-md border-2 border-red-500">
 
-      <section className="mt-6">
-        <h3 className="text-lg font-semibold">Média geral por matéria</h3>
-        {Object.entries(mediasPorDisciplina).map(([disciplina, medias]) => {
-          const mediaGeral = calcularMedia(medias);
-          return (
-            <DisciplinaMediaCard
-              key={disciplina}
-              disciplina={disciplina}
-              mediaGeral={mediaGeral}
-            />
-          );
-        })}
-      </section>
+        <h2 className="text-xl font-bold mb-4">Desempenho dos Alunos</h2>
 
-            <HomePageButton onClick={() => {navigate("/")}}>
-              Página Inicial
-            </HomePageButton>
+        <div className="flex place-content-center">
+          <section>
+            <h3 className="text-lg font-semibold mb-4">Média por aluno</h3>
+            <div className="flex place-content-center">
+              {alunos.map((aluno) => (
+                <AlunoMediaCard
+                  key={aluno.id}
+                  nome={aluno.nome}
+                  disciplina={aluno.disciplina}
+                  media={calcularMedia(aluno.notas)}
+                />
+              ))}
+            </div>
+          </section>
+        </div>
+
+        <div className="p-4 flex flex-col place-content-center text-center bg-red-100">
+          <section>
+            <h3 className="text-lg font-semibold">Média geral por matéria</h3>
+            <div className="mt-4 flex place-content-center">
+              {Object.entries(mediasPorDisciplina).map(([disciplina, medias]) => {
+                const mediaGeral = calcularMedia(medias);
+                return (
+                  <DisciplinaMediaCard
+                    key={disciplina}
+                    disciplina={disciplina}
+                    mediaGeral={mediaGeral}
+                  />
+                );
+              })}
+            </div>
+          </section>
+        </div>
+        <div>
+          <HomePageButton
+            onClick={() => { navigate("/"); }}
+            className={""}>
+            Página Inicial
+          </HomePageButton>
+        </div>
+      </div>
     </div>
-
   );
 
 }
