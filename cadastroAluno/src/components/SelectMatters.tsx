@@ -9,6 +9,7 @@ type SelectDisciplinaProps = {
 
 export const SelectDisciplina = ({ value, onChange, options }: SelectDisciplinaProps) => (
   <select
+  className="w-full mt-4 px-2 py-1 border border-red-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400"
     value={value}
     onChange={onChange}
     aria-label="Selecionar disciplina">

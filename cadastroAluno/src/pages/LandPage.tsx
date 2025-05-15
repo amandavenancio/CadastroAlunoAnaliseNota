@@ -35,23 +35,24 @@ export const LandPage = () => {
 
 
   return (
-    <div className="w-full flex flex-col max-w-md rounded-xl p-8 shadow-md items-center content-center place-content-center bg-red-100 gap-4">
+    <div className="w-full min-h-screen flex items-center justify-center bg-gray-100">
+      <div className="flex flex-col max-w-md rounded-xl p-8 shadow-md items-center content-center place-content-center bg-red-100 gap-4 border-2 border-red-500">
 
-      <InitialMessage message={initialMessage} />
+        <InitialMessage message={initialMessage} />
 
-      <div className="flex justify-between gap-2 mt-4">
-      <RegisterButton
-        onClick={() => navigate("/register")}
-      >Registrar aluno
-      </RegisterButton>
+        <div className="flex justify-between gap-2 mt-4">
+          <RegisterButton
+            onClick={() => navigate("/register")}
+          >Registrar aluno
+          </RegisterButton>
 
-      <AllNotesButton
-        onClick={() => navigate("/performance")}
-      >Verificar notas
-      </AllNotesButton>
+          <AllNotesButton
+            onClick={() => navigate("/performance")}
+          >Verificar notas
+          </AllNotesButton>
 
+        </div>
       </div>
-
     </div>
   )
 }

@@ -12,6 +12,7 @@ type InputNotaProps = {
 const InputNota = ({nota1, nota2, nota3, onChangeNota1, onChangeNota2, onChangeNota3}: InputNotaProps) => (
   <>
     <input
+    className="w-full mt-4 px-2 py-1 border border-red-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400"
       type="number"
       value={nota1}
       onChange={onChangeNota1}
@@ -19,6 +20,7 @@ const InputNota = ({nota1, nota2, nota3, onChangeNota1, onChangeNota2, onChangeN
       aria-label="Campo para digitar a primeira nota"
     />
     <input
+    className="w-full mt-4 px-2 py-1 border border-red-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400"
       type="number"
       value={nota2}
       onChange={onChangeNota2}
@@ -26,6 +28,7 @@ const InputNota = ({nota1, nota2, nota3, onChangeNota1, onChangeNota2, onChangeN
       aria-label="Campo para digitar a segunda nota"
     />
     <input
+    className="w-full mt-4 px-2 py-1 border border-red-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400"
       type="number"
       value={nota3}
       onChange={onChangeNota3}
