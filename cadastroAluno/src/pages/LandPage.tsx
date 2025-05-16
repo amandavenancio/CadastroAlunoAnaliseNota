@@ -26,31 +26,29 @@ export const LandPage = () => {
   }, []);
 
   useEffect(() => {
-    if (alunoQuantity > 0) {
-      setInitialMessage(`Há ${alunoQuantity} alunos cadastrados.`);
-    } else {
-      setInitialMessage("Não há alunos cadastrados.");
-    }
+    setInitialMessage(
+      alunoQuantity > 0
+        ? `🎓 Há ${alunoQuantity} aluno(s) cadastrados.`
+        : "📭 Nenhum aluno cadastrado ainda."
+    );
   }, [alunoQuantity]);
 
 
   return (
-    <div className="w-full min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="flex flex-col max-w-md rounded-xl p-8 shadow-md items-center content-center place-content-center bg-red-100 gap-4 border-2 border-red-500">
+     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-red-100 to-yellow-100 px-4">
+      <div className="bg-white shadow-2xl rounded-3xl p-10 max-w-xl w-full text-center border border-red-300">
+        <h1 className="text-3xl font-extrabold text-red-600 mb-6">Sistema de Cadastro de Alunos</h1>
 
         <InitialMessage message={initialMessage} />
 
-        <div className="flex justify-between gap-2 mt-4">
-          <RegisterButton
-            onClick={() => navigate("/register")}
-          >Registrar aluno
+        <div className="flex justify-center gap-4 mt-8 flex-wrap">
+          <RegisterButton onClick={() => navigate("/register")}>
+            📋 Registrar Aluno
           </RegisterButton>
 
-          <AllNotesButton
-            onClick={() => navigate("/performance")}
-          >Verificar notas
+          <AllNotesButton onClick={() => navigate("/performance")}>
+            📊 Verificar Notas
           </AllNotesButton>
-
         </div>
       </div>
     </div>
