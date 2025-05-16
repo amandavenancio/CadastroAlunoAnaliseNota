@@ -72,7 +72,10 @@ export const RegisterPage = () => {
 
           <div className="flex justify-center gap-4 pt-4">
             <SaveRegisterPageButton type="submit">💾 Salvar</SaveRegisterPageButton>
-            <HomePageButton onClick={() => navigate("/")}>
+            <HomePageButton 
+            type='button'
+            className=""
+            onClick={() => navigate("/")}>
               🏠 Página Inicial
             </HomePageButton>
           </div>

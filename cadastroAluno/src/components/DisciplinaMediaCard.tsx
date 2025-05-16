@@ -4,7 +4,8 @@ type DisciplinaMediaCardProps = {
 };
 
 export const DisciplinaMediaCard = ({ disciplina, mediaGeral }: DisciplinaMediaCardProps) => (
-  <div className=" bg-white rounded-lg px-6 py-8 ring shadow-xl ring-gray-900/5 ml-4 text-center">
-    <p className=" text-base font-medium">{disciplina}: {mediaGeral.toFixed(2)}</p>
+  <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-md text-center hover:shadow-lg transition">
+    <p className="text-base font-semibold text-gray-800">{disciplina}</p>
+    <p className="text-lg font-bold text-red-500 mt-1">{mediaGeral.toFixed(2)}</p>
   </div>
 );
