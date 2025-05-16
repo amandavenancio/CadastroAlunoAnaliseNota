@@ -4,9 +4,9 @@ type InitialMessageProps = {
 
 export const InitialMessage = ({ message }: InitialMessageProps) => {
   return (
-    <div className="flex flex-col w-full max-w-md items-center">
-      <p className="font-bold text-2xl text-center text-red-500">Olá, bem-vindo(a)!</p>
-      <p className="font-bold mt-4 text-sm">{message}</p>
+    <div className="flex flex-col items-center text-center bg-white border border-red-200 rounded-2xl shadow-md p-6 w-full max-w-md animate-fade-in">
+      <p className="text-2xl font-extrabold text-red-600 mb-2">👋 Olá, bem-vindo(a)!</p>
+      <p className="text-base text-gray-700 font-medium">{message}</p>
     </div>
   );
 };

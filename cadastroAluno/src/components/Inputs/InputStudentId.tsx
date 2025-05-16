@@ -9,7 +9,7 @@ type InputStudentIdProps = {
 
 export const InputStudentId = ({ value, onChange, placeholder }: InputStudentIdProps) => (
   <input
-    className="w-full px-2 py-1 border border-red-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400"
+  className="w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-red-400 transition"
     type="text"
     value={value}
     onChange={onChange}

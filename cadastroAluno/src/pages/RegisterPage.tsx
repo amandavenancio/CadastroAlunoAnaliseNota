@@ -10,9 +10,7 @@ import { SaveRegisterPageButton } from "../components/Buttons/SaveRegisterPageBu
 
 
 export const RegisterPage = () => {
-
   const navigate = useNavigate();
-
   const [nome, setNome] = useState("");
   const [registro, setRegistro] = useState("");
   const [disciplina, setDisciplina] = useState("");
@@ -20,29 +18,35 @@ export const RegisterPage = () => {
   const [nota2, setNota2] = useState("");
   const [nota3, setNota3] = useState("");
 
-  const disciplinas = ["Matemática", "Português", "História", "Física", "Química", "Artes", "Educação Física", "Filosofia", "Sociologia"];
+  const disciplinas = [
+    "Matemática", "Português", "História", "Física",
+    "Química", "Artes", "Educação Física", "Filosofia", "Sociologia"
+  ];
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
     try {
       await salvarAluno({
         registro,
         nome,
         disciplina,
         notas: [Number(nota1), Number(nota2), Number(nota3)]
-      })
-      alert('Aluno cadastrado com sucesso!')
+      });
+      alert('Aluno cadastrado com sucesso!');
     } catch (err) {
-      console.error(err)
-      alert('Erro ao salvar aluno')
+      console.error(err);
+      alert('Erro ao salvar aluno');
     }
-  }
+  };
 
   return (
-    <div className="w-full min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="flex flex-col max-w-md rounded-xl p-8 shadow-md items-center content-center place-content-center bg-red-100 gap-4 border-2 border-red-500">
-        <h2 className="font-bold text-2xl text-center text-red-500">Cadastrar novo aluno</h2>
-        <form onSubmit={handleSubmit}>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-red-100 to-yellow-100 p-4">
+      <div className="bg-white shadow-2xl rounded-3xl p-8 w-full max-w-xl border border-red-200">
+        <h2 className="text-2xl font-extrabold text-red-600 text-center mb-6">
+          📚 Cadastrar novo aluno
+        </h2>
+
+        <form onSubmit={handleSubmit} className="space-y-4">
           <InputStudentId
             value={registro}
             onChange={(e) => setRegistro(e.target.value)}
@@ -66,24 +70,13 @@ export const RegisterPage = () => {
             onChangeNota3={(e) => setNota3(e.target.value)}
           />
 
-          <div className="mt-4 flex place-content-center ">
-            <SaveRegisterPageButton
-              type="submit"
-              disabled={false}
-               >
-              Salvar
-            </SaveRegisterPageButton>
-
-            <HomePageButton 
-              onClick={() => { navigate("/") }}
-              className="ml-4">
-              Página Inicial
+          <div className="flex justify-center gap-4 pt-4">
+            <SaveRegisterPageButton type="submit">💾 Salvar</SaveRegisterPageButton>
+            <HomePageButton onClick={() => navigate("/")}>
+              🏠 Página Inicial
             </HomePageButton>
           </div>
-
         </form>
-
-
       </div>
     </div>
   );
