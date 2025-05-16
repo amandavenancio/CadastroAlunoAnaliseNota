@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1747425510350" clover="3.2.0">
+  <project timestamp="1747425510350" name="All files">
+    <metrics statements="51" coveredstatements="49" conditionals="10" coveredconditionals="8" methods="17" coveredmethods="16" elements="78" coveredelements="73" complexity="0" loc="51" ncloc="51" packages="5" files="6" classes="6"/>
+    <package name="components">
+      <metrics statements="6" coveredstatements="6" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="2"/>
+      <file name="AlunoMediaCard.tsx" path="C:\Users\nanda\Documents\CodeQueens\Desafio4-CadastroAlunos\cadastroAluno\src\components\AlunoMediaCard.tsx">
+        <metrics statements="4" coveredstatements="4" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="8" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="9" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="11" count="5" type="stmt"/>
+      </file>
+      <file name="DisciplinaMediaCard.tsx" path="C:\Users\nanda\Documents\CodeQueens\Desafio4-CadastroAlunos\cadastroAluno\src\components\DisciplinaMediaCard.tsx">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="4" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.Buttons">
+      <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="HomePageButton.tsx" path="C:\Users\nanda\Documents\CodeQueens\Desafio4-CadastroAlunos\cadastroAluno\src\components\Buttons\HomePageButton.tsx">
+        <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="10" count="1" type="cond" truecount="0" falsecount="2"/>
+        <line num="11" count="3" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.Charts">
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="DisciplinaMediaChart.tsx" path="C:\Users\nanda\Documents\CodeQueens\Desafio4-CadastroAlunos\cadastroAluno\src\components\Charts\DisciplinaMediaChart.tsx">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="3" type="stmt"/>
+      </file>
+    </package>
+    <package name="pages">
+      <metrics statements="35" coveredstatements="33" conditionals="3" coveredconditionals="3" methods="11" coveredmethods="10"/>
+      <file name="StudentsPerformancePage.tsx" path="C:\Users\nanda\Documents\CodeQueens\Desafio4-CadastroAlunos\cadastroAluno\src\pages\StudentsPerformancePage.tsx">
+        <metrics statements="35" coveredstatements="33" conditionals="3" coveredconditionals="3" methods="11" coveredmethods="10"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="19" count="3" type="stmt"/>
+        <line num="20" count="3" type="stmt"/>
+        <line num="21" count="3" type="stmt"/>
+        <line num="23" count="3" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="36" count="3" type="stmt"/>
+        <line num="37" count="3" type="stmt"/>
+        <line num="38" count="4" type="stmt"/>
+        <line num="39" count="4" type="cond" truecount="1" falsecount="0"/>
+        <line num="40" count="4" type="stmt"/>
+        <line num="42" count="4" type="stmt"/>
+        <line num="45" count="4" type="stmt"/>
+        <line num="50" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="51" count="2" type="stmt"/>
+        <line num="54" count="3" type="stmt"/>
+        <line num="63" count="1" type="stmt"/>
+        <line num="68" count="4" type="stmt"/>
+        <line num="79" count="3" type="stmt"/>
+        <line num="93" count="4" type="stmt"/>
+        <line num="94" count="4" type="stmt"/>
+        <line num="110" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="utils">
+      <metrics statements="4" coveredstatements="4" conditionals="1" coveredconditionals="1" methods="2" coveredmethods="2"/>
+      <file name="media.tsx" path="C:\Users\nanda\Documents\CodeQueens\Desafio4-CadastroAlunos\cadastroAluno\src\utils\media.tsx">
+        <metrics statements="4" coveredstatements="4" conditionals="1" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="18" type="cond" truecount="1" falsecount="0"/>
+        <line num="3" count="34" type="stmt"/>
+        <line num="4" count="17" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>

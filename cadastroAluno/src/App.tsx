@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { LandPage } from './pages/LandPage'
 import { RegisterPage } from './pages/RegisterPage'
-import { StudentsPerformancePage } from './pages/StudentsPerformancePage '
+import { StudentsPerformancePage } from './pages/StudentsPerformancePage'
 
 export const App = () => {
 
