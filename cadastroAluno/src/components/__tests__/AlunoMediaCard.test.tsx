@@ -19,4 +19,22 @@ describe("AlunoMediaCard", () => {
     expect(screen.getByText("Carlos")).toBeInTheDocument();
     expect(screen.getByText(/Reprovado/i)).toBeInTheDocument();
   });
+
+    it("exibe nome, disciplina e média", () => {
+    render(<AlunoMediaCard nome="Carla" disciplina="Física" media={7.5} />);
+
+    expect(screen.getByText("Carla")).toBeInTheDocument();
+    expect(screen.getByText(/Física - Média: 7.50/)).toBeInTheDocument();
+  });
+
+  it("exibe status Aprovado", () => {
+    render(<AlunoMediaCard nome="Lucas" disciplina="História" media={6.1} />);
+    expect(screen.getByText(/Aprovado/i)).toBeInTheDocument();
+  });
+
+  it("exibe status Reprovado", () => {
+    render(<AlunoMediaCard nome="Joana" disciplina="Química" media={4.9} />);
+    expect(screen.getByText(/Reprovado/i)).toBeInTheDocument();
+  });
+
 });
