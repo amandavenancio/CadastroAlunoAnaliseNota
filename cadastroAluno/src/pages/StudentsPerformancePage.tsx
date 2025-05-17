@@ -6,6 +6,7 @@ import { AlunoMediaCard } from "../components/AlunoMediaCard";
 import { buscarAlunos } from '../services/studentSaveAndSearch'
 import { HomePageButton } from "../components/Buttons/HomePageButton";
 import { DisciplinaMediaChart } from "../components/Charts/DisciplinaMediaChart";
+import { LoadingSpinner } from "../components/LoadingSpinner";
 
 
 type Aluno = {
@@ -19,6 +20,7 @@ export const StudentsPerformancePage = () => {
   const navigate = useNavigate();
   const [alunos, setAlunos] = useState<Aluno[]>([]);
   const [filtroDisciplina, setFiltroDisciplina] = useState<string>("");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchAlunos = async () => {
@@ -51,13 +53,40 @@ export const StudentsPerformancePage = () => {
     ? alunos.filter((aluno) => aluno.disciplina === filtroDisciplina)
     : alunos;
 
+  useEffect(() => {
+    const fetchAlunos = async () => {
+      try {
+        const alunosSupabase = await buscarAlunos();
+        setAlunos(alunosSupabase);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false); // ← aqui desativa o loading
+      }
+    };
+
+    fetchAlunos();
+  }, []);
+
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-red-100 to-yellow-100 flex items-center justify-center p-6">
+        <LoadingSpinner />
+      </div>
+    );
+  }
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-red-100 to-yellow-100 flex items-center justify-center p-6">
-      <div className="bg-white rounded-3xl shadow-2xl border border-red-200 max-w-5xl w-full p-8">
 
-        <h2 className="text-3xl font-extrabold text-red-600 text-center mb-10">📊 Desempenho dos Alunos</h2>
+    <div className="min-h-screen bg-gradient-to-br from-red-100 to-yellow-100 flex items-center justify-center p-6 animate-fade-in">
+      <div className="bg-white rounded-3xl shadow-2xl border border-red-200 max-w-5xl w-full p-8 animate-scale-up">
 
-        <div className="mb-6 flex justify-center">
+        <h2 className="text-3xl font-extrabold text-red-600 text-center mb-10 animate-fade-in">
+          📊 Desempenho dos Alunos
+        </h2>
+
+        <div className="mb-6 flex justify-center animate-scale-up delay-[100ms]">
           <select
             value={filtroDisciplina}
             onChange={(e) => setFiltroDisciplina(e.target.value)}
@@ -73,45 +102,68 @@ export const StudentsPerformancePage = () => {
         </div>
 
         <section className="mb-10">
-          <h3 className="text-xl font-semibold text-gray-700 mb-4 text-center">🎓 Média por aluno</h3>
+          <h3 className="text-xl font-semibold text-gray-700 mb-4 text-center animate-fade-in">
+            🎓 Média por aluno
+          </h3>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
-            {alunosFiltrados.map((aluno) => (
-              <AlunoMediaCard
+            {alunosFiltrados.map((aluno, index) => (
+              <div
                 key={aluno.id}
-                nome={aluno.nome}
-                disciplina={aluno.disciplina}
-                media={calcularMedia(aluno.notas)}
-              />
+                className="animate-scale-up"
+                style={{
+                  animationDelay: `${index * 100}ms`,
+                  animationFillMode: "forwards"
+                }}
+              >
+                <AlunoMediaCard
+                  nome={aluno.nome}
+                  disciplina={aluno.disciplina}
+                  media={calcularMedia(aluno.notas)}
+                />
+              </div>
             ))}
           </div>
         </section>
 
         <section className="mb-10">
-          <h3 className="text-xl font-semibold text-gray-700 mb-4 text-center">📚 Média geral por matéria</h3>
+          <h3 className="text-xl font-semibold text-gray-700 mb-4 text-center animate-fade-in">
+            📚 Média geral por matéria
+          </h3>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
-            {Object.entries(mediasPorDisciplina).map(([disciplina, medias]) => {
+            {Object.entries(mediasPorDisciplina).map(([disciplina, medias], index) => {
               const mediaGeral = calcularMedia(medias);
               return (
-                <DisciplinaMediaCard
+                <div
                   key={disciplina}
-                  disciplina={disciplina}
-                  mediaGeral={mediaGeral}
-                />
+                  className="animate-scale-up"
+                  style={{
+                    animationDelay: `${index * 100}ms`,
+                    animationFillMode: "forwards"
+                  }}
+                >
+                  <DisciplinaMediaCard
+                    disciplina={disciplina}
+                    mediaGeral={mediaGeral}
+                  />
+                </div>
               );
             })}
           </div>
         </section>
 
-        <DisciplinaMediaChart data={chartData} />
-
-        <div className="flex justify-center">
-          <HomePageButton
-            className="mt-8"
-            onClick={() => navigate("/")} type="button">
-            🏠 Voltar para a Página Inicial
-          </HomePageButton>
+        <div className="animate-fade-in delay-[300ms]">
+          <DisciplinaMediaChart data={chartData} />
         </div>
 
+        <div className="flex justify-center animate-scale-up delay-[400ms]">
+          <HomePageButton
+            className="mt-8"
+            onClick={() => navigate("/")}
+            type="button"
+          >
+            🏠 Página Inicial
+          </HomePageButton>
+        </div>
       </div>
     </div>
   );

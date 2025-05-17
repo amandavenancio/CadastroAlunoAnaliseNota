@@ -5,11 +5,13 @@ import { AllNotesButton } from "../components/Buttons/AllNotesButton";
 import { RegisterButton } from "../components/Buttons/RegisterButton";
 
 import { buscarAlunos } from "../services/studentSaveAndSearch";
+import { LoadingSpinner } from "../components/LoadingSpinner";
 
 export const LandPage = () => {
 
   const [alunoQuantity, setAlunoQuantity] = useState(0);
   const [initialMessage, setInitialMessage] = useState('');
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -33,6 +35,28 @@ export const LandPage = () => {
     );
   }, [alunoQuantity]);
 
+  useEffect(() => {
+  const fetchAlunos = async () => {
+    try {
+      const alunos = await buscarAlunos();
+      setAlunoQuantity(alunos.length);
+    } catch (error) {
+      console.error("Erro ao buscar alunos:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  fetchAlunos();
+}, []);
+
+  if (loading) {
+  return (
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+      <LoadingSpinner message="Carregando alunos..." />
+    </div>
+  );
+}
 
   return (
      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-red-100 to-yellow-100 px-4">
