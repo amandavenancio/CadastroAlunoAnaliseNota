@@ -10,10 +10,19 @@ import { LoadingSpinner } from "../components/LoadingSpinner";
 
 
 type Aluno = {
-  id: string;
+  registro: string;
   nome: string;
   disciplina: string;
   notas: number[];
+};
+
+type AlunoAgrupado = {
+  registro: string;
+  nome: string;
+  disciplinas: {
+    nome: string;
+    media: number;
+  }[];
 };
 
 export const StudentsPerformancePage = () => {
@@ -21,19 +30,6 @@ export const StudentsPerformancePage = () => {
   const [alunos, setAlunos] = useState<Aluno[]>([]);
   const [filtroDisciplina, setFiltroDisciplina] = useState<string>("");
   const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchAlunos = async () => {
-      try {
-        const alunosSupabase = await buscarAlunos();
-        setAlunos(alunosSupabase);
-      } catch (err) {
-        console.error(err);
-      }
-    };
-
-    fetchAlunos();
-  }, []);
 
   const mediasPorDisciplina: { [disciplina: string]: number[] } = {};
   alunos.forEach((aluno) => {
@@ -52,6 +48,23 @@ export const StudentsPerformancePage = () => {
   const alunosFiltrados = filtroDisciplina
     ? alunos.filter((aluno) => aluno.disciplina === filtroDisciplina)
     : alunos;
+
+  const alunosAgrupados: AlunoAgrupado[] = [];
+
+  alunosFiltrados.forEach((aluno) => {
+    const media = calcularMedia(aluno.notas);
+    const existente = alunosAgrupados.find(a => a.registro === aluno.registro);
+
+    if (existente) {
+      existente.disciplinas.push({ nome: aluno.disciplina, media });
+    } else {
+      alunosAgrupados.push({
+        registro: aluno.registro,
+        nome: aluno.nome,
+        disciplinas: [{ nome: aluno.disciplina, media }],
+      });
+    }
+  });
 
   useEffect(() => {
     const fetchAlunos = async () => {
@@ -103,24 +116,16 @@ export const StudentsPerformancePage = () => {
 
         <section className="mb-10">
           <h3 className="text-xl font-semibold text-gray-700 mb-4 text-center animate-fade-in">
-            🎓 Média por aluno
+            🎓 Desempenho por aluno
           </h3>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
-            {alunosFiltrados.map((aluno, index) => (
-              <div
-                key={aluno.id}
-                className="animate-scale-up"
-                style={{
-                  animationDelay: `${index * 100}ms`,
-                  animationFillMode: "forwards"
-                }}
-              >
-                <AlunoMediaCard
-                  nome={aluno.nome}
-                  disciplina={aluno.disciplina}
-                  media={calcularMedia(aluno.notas)}
-                />
-              </div>
+            {alunosAgrupados.map((aluno) => (
+              <AlunoMediaCard
+                key={aluno.registro}
+                nome={aluno.nome}
+                registro={aluno.registro}
+                disciplinas={aluno.disciplinas}
+              />
             ))}
           </div>
         </section>
